@@ -29,11 +29,9 @@ export const loadPhonebooks = () => {
             });
     }
 }
-
 // end load phonebooks data
 
 // start add phonebooks data
-
 export const addPhonebookSuccess = (phonebooks) => ({
     type: 'ADD_PHONEBOOKS_SUCCESS',
     phonebooks
@@ -63,8 +61,35 @@ export const addPhonebooks = (name, phone) => {
     }
 }
 
-// start delete Phonebooks data
+// start edit phonebooks data
+export const editPhonebookSuccess = (phonebooks) => ({
+    type: 'EDIT_PHONEBOOKS_SUCCESS',
+    phonebooks
+})
 
+export const editPhonebooksFailure = (id) => ({
+    type: 'EDIT_PHONEBOOKS_FAILURE', id
+})
+
+const editPhonebooksRedux = (id, name, phone) => ({
+    type: 'EDIT_PHONEBOOKS', id, name, phone
+})
+
+export const addPhonebooks = (name, phone) => {
+    return dispatch => {
+        dispatch(editPhonebooksRedux(id, name, phone))
+        return request.put(`phonebooks/${id}`, { name, phone })
+            .then(function (response) {
+                dispatch(editPhonebookSuccess(response.data))
+            })
+            .catch(function (error) {
+                console.error(error);
+                dispatch(editPhonebooksFailure(id))
+            });
+    }
+}
+
+// start delete Phonebooks data
 const deletePhonebooksRedux = (id) => ({
     type: 'DELETE_PHONEBOOKS', id
 })
