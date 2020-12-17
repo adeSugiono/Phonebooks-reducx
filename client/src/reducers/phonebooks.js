@@ -7,15 +7,15 @@ const phonebooks = (state = [], action) => {
             })
 
         case 'EDIT_PHONEBOOKS':
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    name: action.name,
-                    phone: action.phone,
-                    sent: true
+            const newState = [];
+            state.map(item => {
+                if (item.id === action.id) {
+                    item.name = action.name;
+                    item.phone = action.phone;
                 }
-            ]
+                return newState.push(item);
+            });
+            return newState;
 
         case 'ADD_PHONEBOOKS':
             return [
