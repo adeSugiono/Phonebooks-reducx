@@ -75,7 +75,7 @@ const editPhonebooksRedux = (id, name, phone) => ({
     type: 'EDIT_PHONEBOOKS', id, name, phone
 })
 
-export const addPhonebooks = (name, phone) => {
+export const editPhonebooks = (id, name, phone) => {
     return dispatch => {
         dispatch(editPhonebooksRedux(id, name, phone))
         return request.put(`phonebooks/${id}`, { name, phone })
