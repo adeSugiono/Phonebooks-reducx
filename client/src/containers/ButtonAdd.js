@@ -53,9 +53,9 @@ class ButtonAdd extends Component {
                 </div>
                 <div className="form-group row">
                     <button className="btn btn-success" type="submit" onClick={this.handleSubmit} >
-                        <i class="far fa-check-circle" /> Save</button>
+                        <i className="far fa-check-circle" /> Save</button>
                     <button className="btn btn-warning" type="submit" onClick={this.handleCancel} >
-                        <i class="fas fa-ban" /> Cancle </button>
+                        <i className="fas fa-ban" /> Cancle </button>
                 </div>
             </form >
         )
@@ -64,7 +64,7 @@ class ButtonAdd extends Component {
         return (
             <div >
             <button className="btn btn-primary" href='/' onClick={this.handleAddButton} type="button" >
-            <i class="fas fa-plus-circle"> Add</i>
+            <i className="fas fa-plus-circle"> Add</i>
             </button><br></br>
             </div>
         )
